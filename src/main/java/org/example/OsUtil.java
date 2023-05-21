@@ -1,6 +1,6 @@
 package org.example;
 
-public class Util {
+public class OsUtil {
     static String osName = System.getProperty("os.name");
     static String osArch = System.getProperty("os.arch");
 
@@ -8,7 +8,7 @@ public class Util {
         return osName != null && osName.toLowerCase().startsWith("windows");
     }
 
-    
+
     public static boolean isMac() {
         return osName != null && osName.toLowerCase().startsWith("mac");
     }

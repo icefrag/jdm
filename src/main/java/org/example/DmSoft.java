@@ -53,7 +53,7 @@ public class DmSoft {
      */
     private void loadDmInfo() {
         log.debug("初始化大漠插件信息");
-        if (!Util.isWindows() || Util.is64Bit()) {
+        if (!OsUtil.isWindows() || OsUtil.is64Bit()) {
             throw new RuntimeException("大漠插件只能在window平台使用.jdk必须是32位的.");
         }
         if (!checkDmExists()) {
@@ -423,7 +423,7 @@ public class DmSoft {
      * @return 窗口的标题
      */
     public String GetWindowTitle(int hwnd) {
-        return Dispatch.call(dm, "GetWindowTitle", hwnd).getString();
+        return Dispatch.call(dm, "GetWindowTitle", new Object[]{hwnd}).getString();
     }
 
     /**
@@ -542,7 +542,7 @@ public class DmSoft {
      *             13 : 强制结束窗口所在进程.<br/>
      * @return 0: 失败 1:成功
      */
-    public int SetWindowState(int hwnd, int flag) {
+    public int SetWindowState(long hwnd, int flag) {
         return Dispatch.call(dm, "SetWindowState", hwnd, flag).getInt();
     }
 
@@ -622,7 +622,7 @@ public class DmSoft {
      * @param mode    模式
      * @return 0: 失败 1:成功
      */
-    public int BindWindowEx(int hwnd, String display, String mouse, String keypad, String pub, int mode) {
+    public int BindWindowEx(long hwnd, String display, String mouse, String keypad, String pub, int mode) {
         return Dispatch.call(dm, "BindWindowEx", hwnd, display, mouse, keypad, pub, mode).getInt();
     }
 
@@ -832,8 +832,8 @@ public class DmSoft {
      * @param show 0表示不打开,1表示打开
      * @return 0: 失败 1: 成功
      */
-    public long SetShowErrorMsg(int show) {
-        return Dispatch.call(dm, "SetPath", show).getLong();
+    public int SetShowErrorMsg(int show) {
+        return Dispatch.call(dm, "SetShowErrorMsg", new Object[]{show}).getInt();
     }
 
     /**
@@ -1610,6 +1610,7 @@ public class DmSoft {
 
     /**
      * 查找指定区域内的颜色,颜色格式"RRGGBB-DRDGDB",注意,和按键的颜色格式相反
+     * 亲测不可用,请使用FindColorE
      *
      * @param x1    区域的左上X坐标
      * @param y1    区域的左上Y坐标
@@ -1630,6 +1631,7 @@ public class DmSoft {
      * @param intY  变参指针:返回Y坐标
      * @return 0:没找到 1:找到
      */
+    @Deprecated
     public int FindColor(int x1, int y1, int x2, int y2, String color, double sim, int dir, Variant intX, Variant intY) {
         return Dispatch.callN(dm, "FindColor", new Object[]{x1, y1, x2, y2, color, sim, dir, intX, intY}).getInt();
     }
@@ -1704,6 +1706,7 @@ public class DmSoft {
      * @param intY         变参指针:返回Y坐标(坐标为first_color所在坐标)
      * @return 0:没找到 1:找到
      */
+    @Deprecated
     public int FindMultiColor(int x1, int y1, int x2, int y2, String first_color, String offset_color, double sim, int dir, Variant intX, Variant intY) {
         return Dispatch.callN(dm, "FindMultiColor", new Object[]{x1, y1, x2, y2, first_color, offset_color, sim, dir, intX, intY}).getInt();
     }
@@ -1729,7 +1732,7 @@ public class DmSoft {
      * @return 返回X和Y坐标 形式如"x|y", 比如"100|200"
      */
     public String FindMultiColorE(int x1, int y1, int x2, int y2, String first_color, String offset_color, double sim, int dir) {
-        return Dispatch.call(dm, "FindMultiColorE", x1, y1, x2, y2, first_color, offset_color, sim, dir).getString();
+        return Dispatch.call(dm, "FindMultiColorE", new Object[]{x1, y1, x2, y2, first_color, offset_color, sim, dir}).getString();
     }
 
     /**
@@ -2906,5 +2909,9 @@ public class DmSoft {
      */
     public int Stop(int id) {
         return Dispatch.call(dm, "Stop", id).getInt();
+    }
+
+    public ActiveXComponent getDmActiveXComponent() {
+        return this.dm;
     }
 }
