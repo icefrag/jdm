@@ -1631,7 +1631,6 @@ public class DmSoft {
      * @param intY  变参指针:返回Y坐标
      * @return 0:没找到 1:找到
      */
-    @Deprecated
     public int FindColor(int x1, int y1, int x2, int y2, String color, double sim, int dir, Variant intX, Variant intY) {
         return Dispatch.callN(dm, "FindColor", new Object[]{x1, y1, x2, y2, color, sim, dir, intX, intY}).getInt();
     }
@@ -1706,7 +1705,6 @@ public class DmSoft {
      * @param intY         变参指针:返回Y坐标(坐标为first_color所在坐标)
      * @return 0:没找到 1:找到
      */
-    @Deprecated
     public int FindMultiColor(int x1, int y1, int x2, int y2, String first_color, String offset_color, double sim, int dir, Variant intX, Variant intY) {
         return Dispatch.callN(dm, "FindMultiColor", new Object[]{x1, y1, x2, y2, first_color, offset_color, sim, dir, intX, intY}).getInt();
     }
