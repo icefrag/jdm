@@ -49,5 +49,4 @@ public class DmConfig {
      */
     @Builder.Default
     private String programId = "dm.dmsoft";
-
 }

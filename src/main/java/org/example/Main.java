@@ -6,17 +6,12 @@ package org.example;
  * @date 2023/6/8
  */
 public class Main {
-    private static DmSoft dm;
 
-    public static void main(String[] args) throws InterruptedException {
-        // 3.1233的配置都可以走默认
-        dm = new DmSoft();
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                dm.unReg();
-            }
-        });
-        System.out.println(dm.ver());
+    public static void main(String[] args) {
+        DmConfig dmConfig = DmConfig.builder().build();
+        // 免注册,注册大漠
+        DmSoft dmSoft = new DmSoft(dmConfig);
+        DmInterface dm = dmSoft.getDm();
+        System.out.println(dm.GetPath());
     }
 }
