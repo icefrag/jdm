@@ -25,6 +25,8 @@ public class DmSoft {
         // 注册
         register();
         initDm();
+        dmObject.SetPath(dmConfig.getExtractResourceFolder());
+        dmObject.SetShowErrorMsg(0);
     }
 
     private void register() {
