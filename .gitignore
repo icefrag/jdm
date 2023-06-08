@@ -44,7 +44,7 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-
+fuzhu/
 
 # OS
 .DS_Store
