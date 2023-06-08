@@ -10,8 +10,7 @@ import com.sun.jna.platform.win32.Variant;
 public interface DmInterface {
 
     /**
-     * =========================================
-     *                  基本设置(开始)
+     * ===================基本设置(开始)======================
      */
     @ComMethod
     String Ver();
@@ -35,14 +34,12 @@ public interface DmInterface {
     int SetShowErrorMsg(int show);
 
     /**
-     * =========================================
-     *                 基本设置(完成)
+     * ==================基本设置(完成)=======================
      */
 
 
     /**
-     * =========================================
-     * 图色(开始)
+     * ===================图色(开始)======================
      */
     @ComMethod
     int FindPic(int x1, int y1, int x2, int y2, String pic_name, String delta_color, double sim, int dir, Variant.VARIANT intX, Variant.VARIANT intY);
@@ -56,14 +53,13 @@ public interface DmInterface {
     @ComMethod
     int GetColorNum(int x1, int y1, int x2, int y2, String color, double sim);
     /**
-     * =========================================
-     *                  图色(结束)
+     * ====================图色(结束)=====================
+     *
      */
 
 
     /**
-     * =========================================
-     * 键鼠(开始)
+     * ==================键鼠(开始)=======================
      */
     @ComMethod
     int MoveTo(int x, int y);
@@ -74,26 +70,24 @@ public interface DmInterface {
     @ComMethod
     int LeftClick();
     /**
-     * =========================================
-     *                  键鼠(结束)
+     * ==================键鼠(结束)=======================
+     *
      */
 
 
     /**
-     * =========================================
-     * 文字识别(开始)
+     * ==================文字识别(开始)=======================
      */
     @ComMethod
     int SetDict(int index, String file);
 
     /**
-     * =========================================
-     *                  文字识别(结束)
+     * ==================文字识别(结束)=======================
+     *
      */
 
     /**
-     * =========================================
-     * 窗口(开始)
+     * ====================窗口(开始)=====================
      */
     @ComMethod
     int GetMousePointWindow();
@@ -107,14 +101,13 @@ public interface DmInterface {
     @ComMethod
     int MoveWindow(int hwnd, int x, int y);
     /**
-     * =========================================
-     *                  窗口(结束)
+     * ==================窗口(结束)=======================
+     *
      */
 
 
     /**
-     * =========================================
-     * 后台设置(开始)
+     * ==================后台设置(开始)=======================
      */
     @ComMethod
     int BindWindowEx(int hwnd, String display, String mouse, String keypad, String publicStr, int mode);
@@ -122,7 +115,7 @@ public interface DmInterface {
     @ComMethod
     int UnBindWindow();
     /**
-     * =========================================
-     *                  后台设置(结束)
+     * ==================后台设置(结束)=======================
+     *
      */
 }
