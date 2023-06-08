@@ -12,63 +12,117 @@ public interface DmInterface {
     /**
      * =========================================
      *                  基本设置(开始)
-     * =========================================
      */
     @ComMethod
     String Ver();
 
     @ComMethod
-    long Reg(String reg_code, String ver_info);
+    int Reg(String reg_code, String ver_info);
 
     @ComMethod
-    long SetPath(String path);
+    int SetPath(String path);
 
     @ComMethod
     String GetPath();
 
     /**
      * show 整形数: 0表示不打开,1表示打开
+     *
      * @param show show
      * @return 0-失败 1-成功
      */
     @ComMethod
-    long SetShowErrorMsg (int show);
+    int SetShowErrorMsg(int show);
 
     /**
      * =========================================
      *                 基本设置(完成)
-     * =========================================
      */
 
 
     /**
      * =========================================
-     *                  图色(开始)
-     * =========================================
+     * 图色(开始)
      */
     @ComMethod
-    long FindPic(int x1, int y1, int x2, int y2, String pic_name, String delta_color, double sim, int dir, Variant.VARIANT intX, Variant.VARIANT intY);
+    int FindPic(int x1, int y1, int x2, int y2, String pic_name, String delta_color, double sim, int dir, Variant.VARIANT intX, Variant.VARIANT intY);
+
+    @ComMethod
+    String FindPicE(int x1, int y1, int x2, int y2, String pic_name, String delta_color, double sim, int dir);
+
+    @ComMethod
+    String FindMultiColorE(int x1, int y1, int x2, int y2, String first_color, String offset_color, double sim, int dir);
+
+    @ComMethod
+    int GetColorNum(int x1, int y1, int x2, int y2, String color, double sim);
     /**
      * =========================================
      *                  图色(结束)
-     * =========================================
      */
-
 
 
     /**
      * =========================================
-     *                  键鼠(开始)
-     * =========================================
+     * 键鼠(开始)
      */
     @ComMethod
-    long MoveTo(int x, int y);
+    int MoveTo(int x, int y);
 
     @ComMethod
-    long LeftDoubleClick();
+    int LeftDoubleClick();
+
+    @ComMethod
+    int LeftClick();
     /**
      * =========================================
      *                  键鼠(结束)
+     */
+
+
+    /**
      * =========================================
+     * 文字识别(开始)
+     */
+    @ComMethod
+    int SetDict(int index, String file);
+
+    /**
+     * =========================================
+     *                  文字识别(结束)
+     */
+
+    /**
+     * =========================================
+     * 窗口(开始)
+     */
+    @ComMethod
+    int GetMousePointWindow();
+
+    @ComMethod
+    String GetWindowTitle(int hwnd);
+
+    @ComMethod
+    int SetWindowState(int hwnd, int flag);
+
+    @ComMethod
+    int MoveWindow(int hwnd, int x, int y);
+    /**
+     * =========================================
+     *                  窗口(结束)
+     */
+
+
+    /**
+     * =========================================
+     * 后台设置(开始)
+     */
+    @ComMethod
+    int BindWindowEx(int hwnd, String display, String mouse, String keypad, String publicStr, int mode);
+
+    @ComMethod
+    int UnBindWindow();
+    /**
+     * =========================================
+     *                  后台设置(结束)
      */
 }
