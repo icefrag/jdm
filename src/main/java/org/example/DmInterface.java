@@ -52,6 +52,15 @@ public interface DmInterface {
 
     @ComMethod
     int GetColorNum(int x1, int y1, int x2, int y2, String color, double sim);
+
+    @ComMethod
+    String FindMultiColorEx(int x1, int y1, int x2, int y2, String first_color, String offset_color, double sim, int dir);
+
+    @ComMethod
+    int GetResultCount(String ret);
+
+    @ComMethod
+    int GetResultPos(String ret, int index, Variant.VARIANT intX, Variant.VARIANT intY);
     /**
      * ====================图色(结束)=====================
      *
@@ -100,6 +109,9 @@ public interface DmInterface {
 
     @ComMethod
     int MoveWindow(int hwnd, int x, int y);
+
+    @ComMethod
+    int FindWindow(String className, String title);
     /**
      * ==================窗口(结束)=======================
      *
