@@ -61,6 +61,9 @@ public interface DmInterface {
 
     @ComMethod
     int GetResultPos(String ret, int index, Variant.VARIANT intX, Variant.VARIANT intY);
+
+    @ComMethod
+    int CmpColor(int x, int y, String color, double sim);
     /**
      * ====================图色(结束)=====================
      *
@@ -78,6 +81,15 @@ public interface DmInterface {
 
     @ComMethod
     int LeftClick();
+
+    @ComMethod
+    int LeftDown();
+
+    @ComMethod
+    int LeftUp();
+
+    @ComMethod
+    int SetMouseDelay(String type, Long delay);
     /**
      * ==================键鼠(结束)=======================
      *
@@ -106,6 +118,10 @@ public interface DmInterface {
 
     @ComMethod
     int SetWindowState(int hwnd, int flag);
+
+    @ComMethod
+    int SetWindowSize(int hwnd, int width, int height);
+
 
     @ComMethod
     int MoveWindow(int hwnd, int x, int y);
